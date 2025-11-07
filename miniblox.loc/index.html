@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- metadata -->
+    <title>Miniblox - Play Free Online Games!</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1.0" />
+    <meta
+      name="description"
+      content="Play free online games such as EggWars, Skywars, and more! Build with an unlimited selection of blocks. No login required!" />
+    <meta name="theme-color" content="#6045a0" />
+    <meta name="keywords" content="Blocks, Voxel, Building, Parkour, PVP, Videogame, BlockCraft, Miniblox" />
+    <meta name="author" content="Victor Wei, qhyun" />
+
+    <meta name="theme-color" content="#6045a0" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <!-- open graph metadata -->
+    <meta property="og:title" content="Miniblox" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://miniblox.io" />
+    <meta property="og:image" content="/images/titlescreen/default.png" />
+    <meta
+      property="og:description"
+      content="Play free online games such as EggWars, Skywars, and more! Build with an unlimited selection of blocks. No login required!" />
+
+    <!-- progressive web app manifest-->
+    <link rel="manifest" href="manifest.json" />
+
+    <!-- prevent caching of index.html -->
+    <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <link rel="preconnect" href="https://www.google.com" />
+    <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
+
+    <!-- recaptcha -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6Ld0f2UqAAAAAF5kaPg3hGzwAwdJ7y6DbxAlD2t6"></script>
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet" crossorigin="anonymous" />
+
+    <!-- AdinPlay Ads -->
+    <script>
+      window.aiptag = window.aiptag || {};
+      aiptag.cmd = aiptag.cmd || [];
+      aiptag.cmd.display = aiptag.cmd.display || [];
+      aiptag.cmd.player = aiptag.cmd.player || [];
+
+      //CMP tool settings
+      aiptag.cmp = {
+        show: false,
+        position: "centered", //centered or bottom
+        button: true,
+        buttonText: "Privacy settings",
+        buttonPosition: "bottom-left", //bottom-left, bottom-right, top-left, top-right
+      };
+
+      // disable adinplay console banner by temporarily unbinding console.log
+      window.tempConsoleLog = window.console.log;
+      window.console.log = function () {};
+    </script>
+    <script src="//api.adinplay.com/libs/aiptag/pub/BLC/blockcraft.online/tag.min.js"></script>
+    <script>
+      window.console.log = window.tempConsoleLog;
+    </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HJ760XE436"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-HJ760XE436");
+    </script>
+
+    <script src="https://sdk.crazygames.com/crazygames-sdk-v3.js"></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
+    <script type="module" crossorigin src="/assets/index-CANiDFbY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index--4F_0oIe.css">
+  </head>
+
+  <body>
+    <div style="position: absolute; right: 0" id="preroll"></div>
+
+    <!-- Load video ad player -->
+    <script>
+      // video-ad-skipped
+      window.aiptag.cmd.player.push(function () {
+        window.aiptag.adplayer = new aipPlayer({
+          AD_WIDTH: 240, // default: 960
+          AD_HEIGHT: 135, // default: 540
+          AD_FULLSCREEN: false,
+          AD_CENTERPLAYER: false,
+          LOADING_TEXT: "loading advertisement",
+          PREROLL_ELEM: function () {
+            return document.getElementById("preroll");
+          },
+          AIP_COMPLETE: function (evt) {
+            /*******************
+           ***** WARNING *****
+           *******************
+           Please do not remove the PREROLL_ELEM
+           from the page, it will be hidden automaticly.
+           If you do want to remove it use the AIP_REMOVE callback.
+          */
+            console.error("Preroll Ad Completed: " + evt);
+          },
+          AIP_REMOVE: function () {},
+        });
+      });
+    </script>
+
+    <!-- Google Adsense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3693486377553906"
+      crossorigin="anonymous"></script>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="background-image" style="image-rendering: pixelated"></div>
+
+      <div id="loading-screen-container">
+        <div id="loading-screen-text">Miniblox</div>
+        <div id="progress-bar">
+          <div id="progress-bar-inner"></div>
+        </div>
+        <div id="progress-text">Initializing game...</div>
+      </div>
+    </div>
+
+    <!-- Game -->
+    <div id="react" style="position: absolute; width: 100%; height: 100%; z-index: 4"></div>
+    <canvas id="canvas-hud"></canvas>
+    <div id="canvas-holder"></div>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"2283e3047a9e4b5680e4f6bb69aa8a45","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
